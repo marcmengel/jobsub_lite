@@ -20,6 +20,7 @@ copy_to_spool	= False
 {% endblock environment %}
 
 {% block schedd_parameters %}{% endblock %}
+{% block requirements %}{% endblock %}
 {% block notify %} {% endblock %}
 
 {% block queue %}
