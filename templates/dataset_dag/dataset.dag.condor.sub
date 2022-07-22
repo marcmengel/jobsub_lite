@@ -22,6 +22,8 @@ copy_to_spool	= False
 {% block schedd_parameters %}{% endblock %}
 {% block requirements %}{% endblock %}
 {% block notify %} {% endblock %}
+{% block singularity %}{% endblock %}
+{% block authenticaion %}{% endblock %}
 
 {% block queue %}
 queue 1

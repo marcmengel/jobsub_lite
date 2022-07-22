@@ -17,9 +17,12 @@ on_exit_remove	= (ExitSignal =?= 11 || (ExitCode =!= UNDEFINED && ExitCode >=0 &
 copy_to_spool	= False
 {% endblock environment %}
 
+{# blocks we do NOT want in dagman lead job: #}
 {% block schedd_parameters %}{% endblock %}
 {% block requirements %}{% endblock %}
 {% block notify %}{% endblock %}
+{% block singularity %}{% endblock %}
+{% block authenticaion %}{% endblock %}
 
 {% block queue %}
 queue
