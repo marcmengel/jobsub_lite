@@ -1,3 +1,4 @@
+{% set filebase %}dataset.dag.lib{% endset %}
 {% extends "submit.cmd" %}
 
 {% block universe_exe %}
@@ -7,7 +8,6 @@ getenv		= True
 arguments	= "-p 0 -f -l . -Lockfile dataset.dag.lock -AutoRescue 1 -DoRescueFrom 0 -Dag dataset.dag -Suppress_notification -CsdVersion $CondorVersion:' '9.0.5' 'Aug' '18' '2021' 'PackageID:' '9.0.5-1' '$ -Dagman /usr/bin/condor_dagman"
 {% endblock universe_exe %}
 
-{% set filebase %}dataset.dag.lib{% endset %}
 
 {% block environment %}
 
@@ -24,6 +24,7 @@ copy_to_spool	= False
 {% block notify %} {% endblock %}
 {% block singularity %}{% endblock %}
 {% block authenticaion %}{% endblock %}
+{% block misc_ads %}{% endblock %}
 
 {% block queue %}
 queue 1

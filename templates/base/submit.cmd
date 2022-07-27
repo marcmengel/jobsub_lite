@@ -5,11 +5,9 @@
 universe           = vanilla
 executable         = {{script_name|default('simple.sh')}}
 arguments          = {{exe_arguments|join(" ")}}
-transfer_executable= True
+transfer_executable  = True
 transfer_input_files = {{executable|basename}}
 {% endblock universe_exe %}
-
-{% set filebase %}{{executable|basename}}{{date}}{{uuid}}cluster.$(Cluster).$(Process){% endset %}
 
 {% block outputs %}
 output             = {{filebase}}.out
@@ -38,7 +36,7 @@ job_lease_duration = 3600
 {%if        OS is defined and OS %}+DesiredOS = {{OS}}{% endif%}
 {%if blacklist is defined and blacklist %}+Blacklist_Sites = "{{blacklist}}" {% endif %}
 +JOB_EXPECTED_MAX_LIFETIME = {{expected_lifetime}}
-{% if site is defined and site != 'LOCAL' %}
+{% if site is defined and site and site != 'LOCAL' %}
 +DESIRED_SITES = "{{site}}"
 {% endif %}
 {% endblock schedd_parameters %}
@@ -61,7 +59,7 @@ job_lease_duration = 3600
 {% endblock monitoring_ads %}
 
 {% block misc_ads %}
-notification       = Never
+notification       = Error
 +Drain = False
 {{resource_provides_quoted|join("\n+DESIRED_")}}
 {{lines|join("\n")}}
